@@ -2,7 +2,7 @@ import express from 'express';
 
 import { pingCheck } from '../../controllers/pingController';
 import { createSubmissionZodSchema } from '../../dtos/CreateSubmissionDto';
-import { validate } from '../../validators/createSubmissionValidator';
+import { validate } from '../../validators/zodValidator';
 import submissionRouter from './submissionRoutes';
 
 const v1Router = express.Router();
