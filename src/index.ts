@@ -4,7 +4,7 @@ import {ExpressAdapter} from '@bull-board/express';
 import express, { Express } from "express";
 
 import serverConfig from "./config/server.config";
-import sampleQueueProducer from "./producers/samplequeue.producer";
+import runPython from './containers/runPythonDocker';
 import sampleQueue from './queues/sample.queue';
 import apiRouter from "./routes";
 import SampleWorker from "./workers/sample.workers";
@@ -31,11 +31,6 @@ app.listen(serverConfig.PORT, () => {
   console.log(`Server started at *:${serverConfig.PORT}`);
 
   SampleWorker('SampleQueue');
-
-  sampleQueueProducer('SampleJob', {
-    name: "Goldy",
-    company: "40Bears",
-    position: "SDE",
-    locatiion: "Remote | Pune | Toronto"
-  });
+  const code = "print(input())";
+  runPython(code, "100");
 });
