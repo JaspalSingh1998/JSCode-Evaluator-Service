@@ -10,6 +10,10 @@ import apiRouter from "./routes";
 import SampleWorker from "./workers/sample.workers";
 const app: Express = express();
 
+app.use(express.json());
+app.use(express.urlencoded());
+app.use(express.text());
+
 app.use('/api', apiRouter);
 
 const serverAdapter = new ExpressAdapter();
